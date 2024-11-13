@@ -296,7 +296,7 @@ impl CPU {
     fn sbc(&mut self, mode: &AddressingMode) {
         let addr = self.get_operand_address(&mode);
         let data = self.mem_read(addr);
-        self.update_zero_and_negative_flags(((data as i8).wrapping_neg().wrapping_sub(1)) as u8);
+        self.add_to_register_a(((data as i8).wrapping_neg().wrapping_sub(1)) as u8);
     }
 
     fn adc(&mut self, mode: &AddressingMode) {
